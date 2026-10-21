@@ -4,34 +4,35 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Azania Producciones</title>
-<meta name="description" content="Azania Producciones. Web en construcción. Contacto: azaniaproducciones@gmail.com">
+<meta name="description" content="Azania Producciones. Web en construcción. Trabajos del equipo y contacto: azaniaproducciones@gmail.com">
 <meta name="theme-color" content="#F4F3EF">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231F3BB3'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='38' fill='%23F4F3EF'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>document.documentElement.classList.add('js')</script>
 <style>
-  :root{--bg:#F4F3EF;--ink:#121212;--soft:#3A3935;--muted:#5C5A55;--line:#D4D2CB;--blue:#1F3BB3}
+  :root{--bg:#F4F3EF;--ink:#121212;--soft:#3A3935;--muted:#5C5A55;--line:#D4D2CB;--blue:#1F3BB3;--pad:clamp(24px,5vw,72px)}
   *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
   html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Archivo',sans-serif;overflow-x:hidden}
-  main{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;gap:48px;padding:clamp(24px,5vw,72px)}
 
   .label{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 
-  /* Fondo: luz azul muy suave que sigue al cursor + grano */
+  /* Fondo */
   .glow{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(560px circle at var(--x,30%) var(--y,50%),rgba(31,59,179,.07),transparent 60%)}
   .grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:2;opacity:.05;animation:grain 1s steps(6) infinite}
   @keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}}
 
-  header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;opacity:0;animation:fade .8s ease .1s forwards}
+  /* Portada */
+  .hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;gap:48px;padding:var(--pad)}
+  .hero header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;opacity:0;animation:fade .8s ease .1s forwards}
   .status{display:flex;align-items:center;gap:10px}
   .dot{position:relative;width:8px;height:8px;border-radius:50%;background:var(--blue)}
   .dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--blue);animation:pulse 1.8s ease-out infinite}
   @keyframes pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(3.2);opacity:0}}
 
-  section{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(40px,6vw,96px)}
-
-  /* Sello */
+  .stage{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(40px,6vw,96px)}
   .seal{width:clamp(240px,32vw,440px);height:auto;flex:0 0 auto;opacity:0;transform:scale(.85) rotate(-25deg);animation:sealIn 1.4s cubic-bezier(.2,.8,.2,1) .2s forwards}
   @keyframes sealIn{to{opacity:1;transform:none}}
   .ring{transform-origin:200px 200px;animation:spin 30s linear infinite}
@@ -48,25 +49,68 @@
   .line.blue{color:var(--blue)}
   .ch{display:inline-block;transform:translateY(105%);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(.6s + var(--i) * .04s)}
   @keyframes rise{to{transform:none}}
-  p{margin:0;font-size:clamp(19px,1.8vw,24px);line-height:1.4;max-width:520px;color:var(--soft);opacity:0;animation:fadeUp .9s ease 1.5s forwards}
+  .lead{margin:0;font-size:clamp(19px,1.8vw,24px);line-height:1.4;max-width:540px;color:var(--soft);opacity:0;animation:fadeUp .9s ease 1.5s forwards}
+  .actions{display:flex;flex-wrap:wrap;align-items:center;gap:20px 32px;opacity:0;animation:fadeUp .9s ease 1.7s forwards}
 
-  .mail{align-self:flex-start;position:relative;color:var(--ink);font-size:clamp(19px,2vw,26px);font-weight:500;text-decoration:none;padding-bottom:6px;word-break:break-all;opacity:0;animation:fadeUp .9s ease 1.7s forwards;transition:color .3s}
+  .mail{position:relative;color:var(--ink);font-size:clamp(19px,2vw,26px);font-weight:500;text-decoration:none;padding-bottom:6px;word-break:break-all;transition:color .3s}
   .mail::before,.mail::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px}
   .mail::before{background:var(--line)}
   .mail::after{background:var(--blue);transform:scaleX(1);transform-origin:right;transition:transform .45s cubic-bezier(.6,0,.2,1)}
   .mail:hover,.mail:focus-visible{color:var(--blue)}
   .mail:hover::after,.mail:focus-visible::after{transform:scaleX(0)}
-  .mail:focus-visible{outline:2px solid var(--blue);outline-offset:6px}
 
-  footer{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);opacity:0;animation:fade 1s ease 2s forwards}
+  .to-works{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border:1.5px solid var(--blue);border-radius:999px;color:var(--blue);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;transition:background .25s,color .25s}
+  .to-works:hover,.to-works:focus-visible{background:var(--blue);color:var(--bg)}
+  .to-works svg{transition:transform .25s}
+  .to-works:hover svg{transform:translateY(3px)}
+
+  /* Trabajos */
+  .works{position:relative;z-index:1;padding:clamp(48px,8vw,120px) var(--pad) clamp(32px,5vw,72px)}
+  .group + .group{margin-top:clamp(56px,8vw,112px)}
+  .group-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:16px;border-bottom:2px solid var(--ink)}
+  .group-head h2{margin:0;font-weight:800;font-size:clamp(28px,3.2vw,44px);letter-spacing:-.02em}
+  .group.ours .group-head{border-color:var(--blue)}
+  .group.ours .group-head h2{color:var(--blue)}
+
+  .list{list-style:none;margin:0;padding:0}
+  .work{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:16px 32px;align-items:start;padding:28px 0;border-bottom:1px solid var(--line)}
+  .num{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--blue);padding-top:.7em}
+  .work h3{margin:0 0 12px;font-weight:800;font-size:clamp(24px,2.6vw,36px);line-height:1.05;letter-spacing:-.02em;transition:color .25s}
+  .work:hover h3{color:var(--blue)}
+  .ours .work h3{font-size:clamp(30px,3.6vw,52px)}
+  .tag{display:inline-block;vertical-align:middle;margin-left:10px;padding:4px 10px;border-radius:999px;background:var(--blue);color:var(--bg);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transform:translateY(-.2em)}
+  .work p{margin:0;max-width:680px;font-size:17px;line-height:1.55;color:var(--soft)}
+  .work p + p{margin-top:10px}
+  .credit{font-family:'IBM Plex Mono',monospace;font-size:13px!important;line-height:1.5!important;color:var(--muted)!important}
+  .go{display:inline-flex;align-items:center;gap:8px;min-height:44px;white-space:nowrap;color:var(--ink);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1.5px solid var(--line);transition:color .25s,border-color .25s}
+  .go svg{transition:transform .25s}
+  .go:hover,.go:focus-visible{color:var(--blue);border-color:var(--blue)}
+  .go:hover svg,.go:focus-visible svg{transform:translate(3px,-3px)}
+
+  a:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+
+  .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+  .js .reveal.in{opacity:1;transform:none}
+
+  .page-foot{position:relative;z-index:1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding:24px var(--pad) 40px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted)}
+  .page-foot a{color:var(--muted)}
+  .page-foot a:hover{color:var(--blue)}
+
+  @media (max-width:720px){
+    .work{grid-template-columns:minmax(0,1fr);gap:10px}
+    .num{padding-top:0}
+    .go{justify-self:start}
+  }
 
   @keyframes fade{to{opacity:1}}
   @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
   @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
     *,*::before,*::after{animation:none!important;transition:none!important}
-    header,p,.mail,footer,.seal{opacity:1;transform:none}
+    .hero header,.lead,.actions,.seal{opacity:1;transform:none}
     .ch,.core{transform:none}
+    .js .reveal{opacity:1;transform:none}
     .grain{display:none}
   }
 </style>
@@ -76,41 +120,157 @@
 <div class="glow" aria-hidden="true"></div>
 
 <main>
-  <header class="label">
-    <span>Azania Producciones</span>
-    <span class="status"><span class="dot" aria-hidden="true"></span>Web en construcción</span>
-  </header>
+  <div class="hero">
+    <header class="label">
+      <span>Azania Producciones</span>
+      <span class="status"><span class="dot" aria-hidden="true"></span>Web en construcción</span>
+    </header>
 
-  <section>
-    <svg class="seal" viewBox="0 0 400 400" role="img" aria-label="Sello de Azania Producciones">
-      <defs><path id="ringPath" d="M200,200 m-172,0 a172,172 0 1,1 344,0 a172,172 0 1,1 -344,0"/></defs>
-      <g class="ring"><text><textPath href="#ringPath">Azania Producciones · Web en construcción · Azania Producciones · Web en construcción ·</textPath></text></g>
-      <g class="core">
-        <circle cx="200" cy="200" r="138" fill="#1F3BB3"/>
-        <text x="200" y="258" text-anchor="middle">A</text>
-      </g>
-    </svg>
+    <div class="stage">
+      <svg class="seal" viewBox="0 0 400 400" role="img" aria-label="Sello de Azania Producciones">
+        <defs><path id="ringPath" d="M200,200 m-172,0 a172,172 0 1,1 344,0 a172,172 0 1,1 -344,0"/></defs>
+        <g class="ring"><text><textPath href="#ringPath">Azania Producciones · Web en construcción · Azania Producciones · Web en construcción ·</textPath></text></g>
+        <g class="core">
+          <circle cx="200" cy="200" r="138" fill="#1F3BB3"/>
+          <text x="200" y="258" text-anchor="middle">A</text>
+        </g>
+      </svg>
 
-    <div class="copy">
-      <h1 aria-label="Azania Producciones">
-        <span class="line" aria-hidden="true"><span class="ch" style="--i:0">A</span><span class="ch" style="--i:1">z</span><span class="ch" style="--i:2">a</span><span class="ch" style="--i:3">n</span><span class="ch" style="--i:4">i</span><span class="ch" style="--i:5">a</span></span>
-        <span class="line blue" aria-hidden="true"><span class="ch" style="--i:6">P</span><span class="ch" style="--i:7">r</span><span class="ch" style="--i:8">o</span><span class="ch" style="--i:9">d</span><span class="ch" style="--i:10">u</span><span class="ch" style="--i:11">c</span><span class="ch" style="--i:12">c</span><span class="ch" style="--i:13">i</span><span class="ch" style="--i:14">o</span><span class="ch" style="--i:15">n</span><span class="ch" style="--i:16">e</span><span class="ch" style="--i:17">s</span></span>
-      </h1>
-      <p>Estamos construyendo nuestra web. Mientras tanto, puedes escribirnos.</p>
-      <a class="mail" href="mailto:azaniaproducciones@gmail.com">azaniaproducciones@gmail.com</a>
+      <div class="copy">
+        <h1 aria-label="Azania Producciones">
+          <span class="line" aria-hidden="true"><span class="ch" style="--i:0">A</span><span class="ch" style="--i:1">z</span><span class="ch" style="--i:2">a</span><span class="ch" style="--i:3">n</span><span class="ch" style="--i:4">i</span><span class="ch" style="--i:5">a</span></span>
+          <span class="line blue" aria-hidden="true"><span class="ch" style="--i:6">P</span><span class="ch" style="--i:7">r</span><span class="ch" style="--i:8">o</span><span class="ch" style="--i:9">d</span><span class="ch" style="--i:10">u</span><span class="ch" style="--i:11">c</span><span class="ch" style="--i:12">c</span><span class="ch" style="--i:13">i</span><span class="ch" style="--i:14">o</span><span class="ch" style="--i:15">n</span><span class="ch" style="--i:16">e</span><span class="ch" style="--i:17">s</span></span>
+        </h1>
+        <p class="lead">Estamos construyendo nuestra web. Mientras tanto, puedes ver los trabajos de nuestro equipo o escribirnos.</p>
+        <div class="actions">
+          <a class="to-works" href="#trabajos">Ver trabajos <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 1v10M1.5 6.5 6 11l4.5-4.5"/></svg></a>
+          <a class="mail" href="mailto:azaniaproducciones@gmail.com">azaniaproducciones@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="works" id="trabajos" aria-label="Trabajos">
+
+    <div class="group ours">
+      <div class="group-head reveal">
+        <h2>Nuestras producciones</h2>
+        <span class="label">02</span>
+      </div>
+      <ol class="list">
+        <li class="work reveal">
+          <span class="num">01</span>
+          <div>
+            <h3>Infancias líquidas <span class="tag">Próximamente</span></h3>
+            <p>Niños y niñas del delta del Ebro, Bangladesh y Chad conversan sobre territorios donde el cambio climático ya es una experiencia cotidiana: el mar que avanza, el agua que lo inunda todo o la que desaparece. Sin voz en off ni expertos, el film convierte sus palabras en un relato global sobre futuro y pertenencia.</p>
+          </div>
+          <a class="go" href="https://www.suncinefest.com/es/film/2049/infancies-liquides" target="_blank" rel="noopener">Ficha en Suncine <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8 8 2M3 2h5v5"/></svg></a>
+        </li>
+        <li class="work reveal">
+          <span class="num">02</span>
+          <div>
+            <h3>Kaza: el último refugio de elefantes</h3>
+            <p>Durante más de una década, cinco naciones del África austral han trabajado unidas para crear Kaza, la mayor reserva transfronteriza de fauna salvaje del mundo, con una extensión similar a la de España. La incorporación al proyecto de la región inexplorada del sur de Angola, una de las zonas más vírgenes e intactas del continente, marca un punto de inflexión en la defensa del medio ambiente.</p>
+            <p>«Es como si estuviéramos en el Masái Mara o el Serengeti hace 120 años», afirman los expertos. En este documental, el periodista Xavier Aldekoa, con 25 años de experiencia en el continente africano, viaja a uno de los últimos paraísos del planeta en busca del último edén de los elefantes.</p>
+          </div>
+          <a class="go" href="https://caixaforumplus.org/v/kaza-el-ultimo-refugio-de-elefantes" target="_blank" rel="noopener">Ver en CaixaForum+ <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8 8 2M3 2h5v5"/></svg></a>
+        </li>
+      </ol>
+    </div>
+
+    <div class="group">
+      <div class="group-head reveal">
+        <h2>Trabajos del equipo</h2>
+        <span class="label">07</span>
+      </div>
+      <ol class="list">
+        <li class="work reveal">
+          <span class="num">01</span>
+          <div>
+            <h3>Serigne</h3>
+            <p>Serigne, un ex pescador senegalés, se presenta como candidato a las elecciones regionales de Madrid para convertirse en diputado. A partir de sus propias experiencias como migrante y pescador, hace campaña contra la xenofobia y la sobrepesca europea en aguas africanas.</p>
+            <p class="credit">Nominado al Emmy a mejor documental en 2023. Seleccionado en festivales como Medina del Campo, New York Festival TV y Bannaba Fest.</p>
+          </div>
+          <a class="go" href="https://www.youtube.com/watch?v=cRAESliz6HM" target="_blank" rel="noopener">Ver en YouTube <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8 8 2M3 2h5v5"/></svg></a>
+        </li>
+        <li class="work reveal">
+          <span class="num">02</span>
+          <div>
+            <h3>Disparos</h3>
+            <p>En uno de los barrios más peligrosos de Ciudad de México, Jair Cabrera, un joven fotógrafo, observa y retrata las consecuencias de un sistema corrupto y de una guerra aún no asimilada.</p>
+            <p class="credit">Seleccionado en el Festival de Cine de Guadalajara y en el Festival de Cine Ambulante.</p>
+          </div>
+          <a class="go" href="https://vimeo.com/314916530" target="_blank" rel="noopener">Ver en Vimeo <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8 8 2M3 2h5v5"/></svg></a>
+        </li>
+        <li class="work reveal">
+          <span class="num">03</span>
+          <div>
+            <h3>Os sons em volta <span class="tag">Próximamente</span></h3>
+            <p>En Bahía, donde la historia de Brasil resuena en cada tambor, <em>Os sons em volta</em> encuentra en el maestro Ubiratan Marques y en Baiana System el hilo conductor de un viaje musical por la memoria, la resistencia y la creación contemporánea.</p>
+            <p>Músico, compositor y director, Ubiratan Marques es una figura clave para comprender la riqueza y la complejidad de la música bahiana. Fundador de la Orquestra Afrosinfônica y miembro de Baiana System, su trayectoria encarna el encuentro entre tradiciones musicales africanas, herencias populares brasileñas y nuevas formas de experimentación sonora. A través de él, el documental explora cómo los ritmos que atravesaron el Atlántico, marcados por la esclavitud y el colonialismo, continúan transformándose y dando lugar a nuevas expresiones artísticas.</p>
+          </div>
+          <a class="go" href="https://vimeo.com/muzungutv/sons" target="_blank" rel="noopener">Ver en Vimeo <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8 8 2M3 2h5v5"/></svg></a>
+        </li>
+        <li class="work reveal">
+          <span class="num">04</span>
+          <div>
+            <h3>Blood on our side: perito forense en México</h3>
+            <p>En Ciudad Juárez, Ana González trabaja día tras día recogiendo fragmentos de balas, cristales y muestras de sangre. Su trabajo es incesante y emocionalmente agotador, una carga que se ve agravada por la violencia de los cárteles, vinculada a la proximidad de esta ciudad mexicana con su vecina, Estados Unidos.</p>
+            <p class="credit">Ganador en el festival de Austin. Cortometraje en la carrera por los Óscar.</p>
+          </div>
+          <a class="go" href="https://www.youtube.com/watch?v=_CQn6B39wkQ" target="_blank" rel="noopener">Ver en YouTube <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8 8 2M3 2h5v5"/></svg></a>
+        </li>
+        <li class="work reveal">
+          <span class="num">05</span>
+          <div>
+            <h3>Los trenes de la guerra de Ucrania</h3>
+            <p>La azafata de tren ucraniana Ira Petruschak y su tripulación arriesgan sus vidas bajo la amenaza de las bombas al embarcarse en una misión de rescate en plena guerra.</p>
+          </div>
+          <a class="go" href="https://youtu.be/K2CNdZ9FGlw" target="_blank" rel="noopener">Ver en YouTube <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8 8 2M3 2h5v5"/></svg></a>
+        </li>
+        <li class="work reveal">
+          <span class="num">06</span>
+          <div>
+            <h3>Informe Robinson: Gigantes de la montaña</h3>
+            <p>El pueblo triqui vive en la sierra del estado de Oaxaca, en México. Se trata de pequeñas comunidades donde existen muchas carencias, donde en ocasiones se hace una comida al día y donde mucha gente no habla castellano. Un entrenador de baloncesto conoció el lugar y decidió formar un equipo con chicos de muy pequeña estatura acostumbrados a jugar descalzos. El progreso de los muchachos en el campo académico y en el deportivo ha sido extraordinario, y hoy son un orgullo para su pueblo.</p>
+          </div>
+          <a class="go" href="https://www.movistarplus.es/deportes/programa/informe-robinson-6/gigantes-de-la-montana/ficha?tipo=E&amp;id=1621762" target="_blank" rel="noopener">Ver en Movistar Plus+ <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8 8 2M3 2h5v5"/></svg></a>
+        </li>
+        <li class="work reveal">
+          <span class="num">07</span>
+          <div>
+            <h3>Sangre en el muro</h3>
+            <p>Esta producción de National Geographic explora cómo México ha sido moldeado por las políticas de Estados Unidos, las caravanas migrantes, los narcotraficantes y la corrupción.</p>
+          </div>
+          <a class="go" href="https://www.youtube.com/watch?v=SWAHD1OgmGM" target="_blank" rel="noopener">Ver en YouTube <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8 8 2M3 2h5v5"/></svg></a>
+        </li>
+      </ol>
     </div>
   </section>
-
-  <footer>© 2026 Azania Producciones</footer>
 </main>
 
+<footer class="page-foot">
+  <span>© 2026 Azania Producciones</span>
+  <a href="mailto:azaniaproducciones@gmail.com">azaniaproducciones@gmail.com</a>
+</footer>
+
 <script>
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
     const g = document.querySelector('.glow');
     addEventListener('pointermove', e => {
       g.style.setProperty('--x', e.clientX + 'px');
       g.style.setProperty('--y', e.clientY + 'px');
     }, { passive: true });
+  }
+  const items = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    items.forEach(el => io.observe(el));
   }
 </script>
 </body>
